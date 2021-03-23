@@ -19,7 +19,7 @@ function getData() {
   tbody.innerHTML = html.join("");
 }
 
-document.getElementById('add-btn').onclick = function addData() {
+function addData() {
   var name = document.getElementById("name").value,
     age = document.getElementById("age").value,
     work = document.getElementById("work").value;
@@ -38,14 +38,6 @@ function removeData(arrIndex) {
   getData();
 }
 
-
-/*
-- click sự kiện sửa, chọn phần tử mảng tương ứng - ok
-- hiển thị lên input - ok
-- thay đổi element thêm mới thành cập nhật
-- thêm funcion cập nhật lại mảng đó ở vị trí cũ hoặc xóa đi -  thêm lại (splice?!)
-- nút cập nhật trở lại thành thêm mới
-*/
 
 function changeData(arrIndex) {
   if (document.getElementById('add-btn')) {
@@ -71,4 +63,5 @@ function updateData(arrIndex) {
   arr[arrIndex].work = document.getElementById('work').value;
   getData();
   document.getElementById('add-btn').innerText = 'Thêm mới';
+  document.getElementById('add-btn').setAttribute('onclick', `addData()`);
 }
