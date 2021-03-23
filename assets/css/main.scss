@@ -1,0 +1,25 @@
+@import 'base';
+@import 'general';
+
+body {
+  font-size: 1.8rem;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+table {
+  margin-top: 3rem;
+}
+
+tr {
+  border-top: 1px solid rgb(172, 172, 172);
+  border-bottom: 1px solid rgb(172, 172, 172);
+}
+
+td, th[class*=col-] {
+  padding: 1.5rem;
+  text-align: center;
+}
