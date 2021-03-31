@@ -1,3 +1,7 @@
+localStorage.arr = 'fadfasd';
+var x =localStorage.getItem('arr') = 'asdasd';
+console.log(x)
+
 let arr = [
   { id: 1, name: "Tran Tu", age: 36, work: "Developer" },
   { id: 2, name: "Ngoc Thanh", age: 15, work: "Doctor" },
