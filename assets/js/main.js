@@ -1,14 +1,14 @@
-localStorage.arr = 'fadfasd';
-var x =localStorage.getItem('arr') = 'asdasd';
-console.log(x)
 
-let arr = [
+
+
+localStorage.setItem('arr', JSON.stringify([
   { id: 1, name: "Tran Tu", age: 36, work: "Developer" },
   { id: 2, name: "Ngoc Thanh", age: 15, work: "Doctor" },
   { id: 3, name: "Huy Hoang", age: 36, work: "Developer" },
   { id: 4, name: "Tran Tu", age: 36, work: "Tester" },
-];
+]));
 
+let arr = JSON.parse(localStorage.getItem('arr'));
 var tbody = document.querySelector("tbody");
 
 function start() {
@@ -34,6 +34,7 @@ function addData() {
     work: work
   }
   arr.push(data);
+  localStorage.setItem('arr', JSON.stringify(data))
   getData()
 }
 
