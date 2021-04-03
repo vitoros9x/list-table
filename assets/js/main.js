@@ -1,17 +1,22 @@
 
 
 
-localStorage.setItem('arr', JSON.stringify([
-  { id: 1, name: "Tran Tu", age: 36, work: "Developer" },
-  { id: 2, name: "Ngoc Thanh", age: 15, work: "Doctor" },
-  { id: 3, name: "Huy Hoang", age: 36, work: "Developer" },
-  { id: 4, name: "Tran Tu", age: 36, work: "Tester" },
-]));
+// localStorage.setItem('arr', JSON.stringify([
+//   { id: 1, name: "Tran Tu", age: 36, work: "Developer" },
+//   { id: 2, name: "Ngoc Thanh", age: 15, work: "Doctor" },
+//   { id: 3, name: "Huy Hoang", age: 36, work: "Developer" },
+//   { id: 4, name: "Tran Tu", age: 36, work: "Tester" },
+// ]));
 
-let arr = JSON.parse(localStorage.getItem('arr'));
+let arr = [];
 var tbody = document.querySelector("tbody");
 
 function start() {
+  if (localStorage.getItem('arr')) {
+    arr = JSON.parse(localStorage.getItem("arr"))
+  } else {
+    arr = []
+  }
   getData();
 }
 start();
@@ -21,6 +26,9 @@ function getData() {
     return `<tr><td>${index + 1}</td><td>${item.name}</td><td>${item.age}</td><td>${item.work}</td><td><button class='change-btn' onclick='changeData(${index})'>Sửa</button></td><td><button class='del-btn' onclick='removeData(${index})' >Xóa</button></td></tr>`;
   });
   tbody.innerHTML = html.join("");
+  document.getElementById('name').value = '';
+  document.getElementById('age').value = '';
+  document.getElementById('work').value = '';
 }
 
 function addData() {
@@ -34,12 +42,14 @@ function addData() {
     work: work
   }
   arr.push(data);
-  localStorage.setItem('arr', JSON.stringify(data))
+  console.log(arr)
+  localStorage.setItem('arr', JSON.stringify(arr))
   getData()
 }
 
 function removeData(arrIndex) {
   arr.splice(arrIndex, 1);
+  localStorage.setItem('arr', JSON.stringify(arr))
   getData();
 }
 
@@ -66,6 +76,7 @@ function updateData(arrIndex) {
   arr[arrIndex].name = document.getElementById('name').value;
   arr[arrIndex].age = document.getElementById('age').value;
   arr[arrIndex].work = document.getElementById('work').value;
+  localStorage.setItem('arr', JSON.stringify(arr))
   getData();
   document.getElementById('add-btn').innerText = 'Thêm mới';
   document.getElementById('add-btn').setAttribute('onclick', `addData()`);
