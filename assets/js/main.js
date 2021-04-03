@@ -1,13 +1,4 @@
 
-
-
-// localStorage.setItem('arr', JSON.stringify([
-//   { id: 1, name: "Tran Tu", age: 36, work: "Developer" },
-//   { id: 2, name: "Ngoc Thanh", age: 15, work: "Doctor" },
-//   { id: 3, name: "Huy Hoang", age: 36, work: "Developer" },
-//   { id: 4, name: "Tran Tu", age: 36, work: "Tester" },
-// ]));
-
 let arr = [];
 var tbody = document.querySelector("tbody");
 
