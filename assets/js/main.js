@@ -72,3 +72,13 @@ function updateData(arrIndex) {
   document.getElementById('add-btn').innerText = 'Thêm mới';
   document.getElementById('add-btn').setAttribute('onclick', `addData()`);
 }
+
+
+document.querySelector('.getAPI').onclick = function () {
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(() => {
+      console.log('Có lỗi đã xảy ra!')
+    });
+}
