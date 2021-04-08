@@ -169,6 +169,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -15px 0 -15px;
+  width: 100%;
 }
 
 [class*=col-] {
@@ -351,6 +352,17 @@ tr {
 td, th[class*=col-] {
   padding: 1.5rem;
   text-align: center;
+}
+
+.container {
+  margin-top: 100px;
+}
+.container .col-12 {
+  text-align: center;
+}
+.container .col-12 * {
+  text-align: center;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=main.css.map */
