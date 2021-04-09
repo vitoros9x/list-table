@@ -1,4 +1,3 @@
-
 // let arr = [];
 // var tbody = document.querySelector("tbody");
 
@@ -44,7 +43,6 @@
 //   getData();
 // }
 
-
 // function changeData(arrIndex) {
 //   if (document.getElementById('add-btn')) {
 //     document.getElementById('add-btn').id = 'update-btn';
@@ -55,7 +53,7 @@
 //   document.querySelectorAll('input').forEach((item) => {
 //     item.style.backgroundColor = '#ffadc3';
 //   })
-  
+
 //   document.getElementById('update-btn').innerText = 'Cập nhật';
 //   document.getElementById('update-btn').setAttribute('onclick', `updateData(${arrIndex})`);
 // }
@@ -82,14 +80,36 @@ Idea:
 
 */
 
-
-document.querySelector('.getAPI').onclick = function () {
-  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
+document.querySelector(".getAPI").onclick = function () {
+  fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+    .then((response) => response.json())
+    .then((data) => {
+      var meal = data.meals[0];
+      {
+        document.querySelector(".box-img__img").src = meal.strMealThumb;
+        document.querySelector(".intro-heading").innerText = meal.strMeal;
+        document.querySelector(".intro-description").innerText =
+          meal.strInstructions;
+        document.querySelector(".category").innerText = meal.strCategory;
+        document.querySelector(".area").innerText = meal.strArea;
+        document.querySelector(".tags").innerText = meal.strTags;
+      }
+      var ingredients = document.querySelector('.ingredients-list');
+      for (var i = 1; i < 100; i++) {
+        if (meal[`strIngredient${i}`]) {
+          ingredients.innerHTML += `<li class=\"ingredients-item\">` + meal[`strIngredient${i}`] + ` - ` + meal[`strMeasure${i}`] + `</li>`;
+        } else {
+          break;
+        }
+      }
+      var videoUrl = meal.strYoutube.substr(meal.strYoutube.indexOf('?v=') + 3);
+      document.querySelector('.recipe-video').src = `https://www.youtube.com/embed/${videoUrl}`;
+      var x = document.querySelectorAll('.hidden');
+      for (let i = 0; i < x.length; i++) {
+        x[i].style.display = 'inline-block';
+      }
     })
     .catch(() => {
-      console.log('Có lỗi đã xảy ra!')
+      console.log("Có lỗi đã xảy ra!");
     });
-}
+};
