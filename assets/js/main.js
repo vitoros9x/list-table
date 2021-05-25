@@ -97,7 +97,7 @@ document.querySelector(".getAPI").onclick = function () {
       var ingredients = document.querySelector('.ingredients-list');
       for (var i = 1; i < 100; i++) {
         if (meal[`strIngredient${i}`]) {
-          ingredients.innerHTML += `<li class=\"ingredients-item\">` + meal[`strIngredient${i}`] + ` - ` + meal[`strMeasure${i}`] + `</li>`;
+          ingredients.innerHTML += `<li class=\"ingredients-item\">${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
         } else {
           break;
         }
@@ -112,4 +112,5 @@ document.querySelector(".getAPI").onclick = function () {
     .catch(() => {
       console.log("Có lỗi đã xảy ra!");
     });
-};
+  }
+// setInterval(getAPI, 3000)
